@@ -314,7 +314,7 @@ h2 {
 
                 if (isValid) {
                     // Armazena um token de autenticação (você pode usar algum valor mais seguro)
-                    localStorage.setItem('authToken', 'validUserToken');
+                    localStorage.setItem('authToken', 'validUserToken', 'user');
                     // Atraso de 1 segundo antes de redirecionar
                     setTimeout(() => {
                         window.location.href = 'indexpainel.html'; // Redireciona para a página do painel
