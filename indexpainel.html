@@ -82,7 +82,7 @@
                     </span>
                     <h3>New Login</h3>
                 </a>
-                <a href="#">
+                <a href="#" id="logoutLink">
                     <span class="material-icons-sharp">
                         logout
                     </span>
@@ -298,11 +298,16 @@
 
     </div>
 <script>
-    // Verifica se o token de autenticação está presente
-    if (!localStorage.getItem('authToken')) {
-        // Se não houver token, redireciona para a página de login
-        window.location.href = 'index.html'; // Altere para o caminho correto se necessário
-    }
+    // Adiciona um ouvinte de evento ao clique no link de logout
+    document.getElementById('logoutLink').addEventListener('click', function(event) {
+        event.preventDefault();  // Impede o comportamento padrão do link (não irá recarregar a página)
+
+        // Remove o token de autenticação do localStorage
+        localStorage.removeItem('authToken');
+
+        // Redireciona para a página de login ou outra página de sua escolha
+        window.location.href = 'index.html';
+    });
 </script>
     <script src="orders.js"></script>
     <script src="index.js"></script>
