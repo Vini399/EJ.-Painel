@@ -314,9 +314,9 @@ h2 {
 
                 if (isValid) {
                     // Armazena um token de autenticação
-                    localStorage.setItem('authToken', 'your_secure_token'); // Pode ser um valor qualquer
+                    localStorage.setItem('authToken');
                     setTimeout(() => {
-                        window.location.href = 'indexpainel.html'; // Redireciona para a página do dashboard
+                        window.location.href = 'indexpainel.html';
                     }, 1000);
                 } else {
                     alert('Usuário ou senha incorretos. Tente novamente.');
