@@ -288,7 +288,7 @@ h2 {
     const FILE_URL = 'https://raw.githubusercontent.com/Vini399/EJ.-Painel/main/senhas.txt';
 
     document.getElementById('loginForm').addEventListener('submit', function(event) {
-        event.preventDefault();  // Impede o envio do formulário
+        event.preventDefault();  // Impede o envio tradicional do formulário
 
         const user = document.getElementById('user').value.trim();
         const password = document.getElementById('password').value.trim();
@@ -313,10 +313,11 @@ h2 {
                 }
 
                 if (isValid) {
-                    // Armazena um token de autenticação
-                    localStorage.setItem('authToken');
+                    // Armazena um token de autenticação (você pode usar algum valor mais seguro)
+                    localStorage.setItem('authToken', 'validUserToken');
+                    // Atraso de 1 segundo antes de redirecionar
                     setTimeout(() => {
-                        window.location.href = 'indexpainel.html';
+                        window.location.href = 'indexpainel.html'; // Redireciona para a página do painel
                     }, 1000);
                 } else {
                     alert('Usuário ou senha incorretos. Tente novamente.');
@@ -325,6 +326,7 @@ h2 {
             .catch(error => {
                 alert('Erro ao verificar as credenciais: ' + error.message);
             });
+    });
 </script>
 
 </body>
