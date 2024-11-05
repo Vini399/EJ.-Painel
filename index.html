@@ -285,16 +285,14 @@ h2 {
 </div>
 
 <script>
-    // URL do arquivo senhas.txt no GitHub
     const FILE_URL = 'https://raw.githubusercontent.com/Vini399/EJ.-Painel/main/senhas.txt';
 
     document.getElementById('loginForm').addEventListener('submit', function(event) {
         event.preventDefault();  // Impede o envio do formulário
 
-        const user = document.getElementById('user').value.trim();  // Remove espaços em branco
-        const password = document.getElementById('password').value.trim();  // Remove espaços em branco
+        const user = document.getElementById('user').value.trim();
+        const password = document.getElementById('password').value.trim();
         
-        // Faz a requisição para o arquivo senhas.txt
         fetch(FILE_URL)
             .then(response => {
                 if (!response.ok) {
@@ -303,23 +301,22 @@ h2 {
                 return response.text();
             })
             .then(data => {
-                const lines = data.split('\n').filter(line => line.trim() !== '');  // Divide o conteúdo em linhas e remove linhas vazias
-
+                const lines = data.split('\n').filter(line => line.trim() !== '');
                 let isValid = false;
 
-                // Verifica cada linha se corresponde ao usuário e senha fornecidos
                 for (const line of lines) {
-                    const [storedUser, storedPass] = line.split(":").map(item => item.trim());  // Divide e remove espaços
+                    const [storedUser, storedPass] = line.split(":").map(item => item.trim());
                     if (user === storedUser && password === storedPass) {
                         isValid = true;
-                        break;  // Se encontrar um usuário/senha válidos, sai do loop
+                        break;
                     }
                 }
 
-                // Exibe a mensagem diretamente no navegador
                 if (isValid) {
+                    // Armazena um token de autenticação
+                    localStorage.setItem('authToken', 'your_secure_token'); // Pode ser um valor qualquer
                     setTimeout(() => {
-                        window.location.href = 'Dashboard/indexpainel.html';
+                        window.location.href = 'dashboard/indexpainel.html'; // Redireciona para a página do dashboard
                     }, 1000);
                 } else {
                     alert('Usuário ou senha incorretos. Tente novamente.');
@@ -328,7 +325,6 @@ h2 {
             .catch(error => {
                 alert('Erro ao verificar as credenciais: ' + error.message);
             });
-    });
 </script>
 
 </body>
